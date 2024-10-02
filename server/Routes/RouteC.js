@@ -3,7 +3,6 @@ import Country from '../Models/country.js';
 
 const router = express.Router();
 
-// Create a new country
 router.post('/countries', async (req, res) => {
   const { name, touristPlaces } = req.body;
 
@@ -25,7 +24,6 @@ router.post('/countries', async (req, res) => {
   }
 });
 
-// Get all countries
 router.get('/countries', async (req, res) => {
   try {
     const countries = await Country.find();
@@ -35,7 +33,7 @@ router.get('/countries', async (req, res) => {
   }
 });
 
-// Get a country by ID
+
 router.get('/countries/:id', async (req, res) => {
   try {
     const country = await Country.findById(req.params.id);
@@ -46,7 +44,7 @@ router.get('/countries/:id', async (req, res) => {
   }
 });
 
-// Update a country by ID
+
 router.put('/countries/:id', async (req, res) => {
   try {
     const country = await Country.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
@@ -57,7 +55,6 @@ router.put('/countries/:id', async (req, res) => {
   }
 });
 
-// Delete a country by ID
 router.delete('/countries/:id', async (req, res) => {
   try {
     const country = await Country.findByIdAndDelete(req.params.id);

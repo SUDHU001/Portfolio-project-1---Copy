@@ -4,6 +4,8 @@ import cors from "cors";
 import routes from "./Routes/Route.js";
 import route from "./Routes/userRoute.js";
 import countryRoutes from './Routes/RouteC.js';
+import tripRoutes from './Routes/tripRoutes.js';
+import routerF from "./Routes/feedback.js";
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -18,8 +20,9 @@ mongoose
 app.use("/api", routes);
 app.use("/api",route);
 app.use('/api', countryRoutes);
-
-const PORT = process.env.PORT || 3006; // Change to 3006 or any other available port
+app.use('/api', tripRoutes);
+app.use('/api',routerF)
+const PORT = process.env.PORT || 3006; 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
